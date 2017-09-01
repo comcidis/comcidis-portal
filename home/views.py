@@ -7,4 +7,4 @@ def index(request):
     :returns: render page
 
     """
-    return render(request, 'index.html')
+    return render(request, 'home/index.html')
