@@ -1,5 +1,50 @@
 {% extends 'base.html' %}
+{% load member_extras %}
 
 {% block content %}
-<h1>Hello</h1>
+<div class="w3-row-padding" style="padding: 51px 16px">
+<h1>Equipe</h1>
+
+<h3>Orientador</h3>
+<ul class="w3-ul w3-card-4">
+{% for advisor in advisors %}
+    <li class="w3-bar">
+      <a href="{{ advisor.lattes_link }}" target="_blank">
+        <img src="{{ advisor.email|gravatar_url:150 }}" class="w3-bar-item
+        w3-circle" style="width:75px">
+        <div class="w3-bar-item">
+          <div><span class="w3-small">{{ advisor.degree }}</span>
+              <span class="w3-large">
+                  {{ advisor.name }}</span>
+          </div>
+          <span>
+              {{advisor.scholarship}}
+          </span>
+        </div>
+      </a>
+    </li>
+{% endfor %}
+</ul>
+
+<h3>Alunos</h3>
+<ul class="w3-ul w3-card-4">
+{% for member in members %}
+    <li class="w3-bar">
+      <a href="{{ member.lattes_link }}" target="_blank">
+        <img src="{{ member.email|gravatar_url:150 }}" class="w3-bar-item
+        w3-circle" style="width:75px">
+        <div class="w3-bar-item">
+          <div><span class="w3-small">{{ member.degree }}</span>
+              <span class="w3-large">
+                  {{ member.name }}</span>
+          </div>
+          <span>
+              {{member.scholarship}}
+          </span>
+        </div>
+      </a>
+    </li>
+{% endfor %}
+</ul>
+</div>
 {% endblock %}

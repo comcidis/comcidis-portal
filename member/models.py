@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Degree(models.Model):
@@ -11,7 +12,6 @@ class Degree(models.Model):
 class Institution(models.Model):
     name = models.CharField(max_length=70)
     initials = models.CharField(max_length=10)
-    position = models.ForeignKey(Degree)
 
     def __str__(self):
         return self.name
@@ -36,6 +36,7 @@ class ScholarshipFounder(models.Model):
 class Scholarship(models.Model):
     name = models.CharField(max_length=70)
     initials = models.CharField(max_length=10)
+    institution = models.ForeignKey(Institution)
     founder = models.ForeignKey(ScholarshipFounder, on_delete=models.CASCADE)
     hours_schedule = models.IntegerField(default=40)
 
@@ -51,12 +52,15 @@ class ScholarshipType(models.Model):
     scholarship = models.ForeignKey(Scholarship)
 
     def __str__(self):
-        return '{}-{}'.format(self.scholarship.initials, self.name)
+        return '{}-{} ({})'.format(self.scholarship.initials,
+                                   self.name,
+                                   self.scholarship.institution.initials)
 
 
 class Member(models.Model):
     """Define a team member"""
     name = models.CharField(max_length=125)
+    advisor = models.BooleanField(default=False)
     email = models.EmailField()
     birthday = models.DateField()
     lattes_link = models.CharField(max_length=150)
