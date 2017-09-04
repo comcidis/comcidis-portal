@@ -15,7 +15,7 @@ class Conference(models.Model):
 
 
 class Publication(models.Model):
-    authors = models.ManyToManyField(Member)
+    authors = models.ManyToManyField(Member, through='AuthorsOrder')
     title = models.CharField(max_length=150)
     abstract = models.TextField()
     resume = models.TextField()
@@ -24,8 +24,18 @@ class Publication(models.Model):
     conference = models.ForeignKey(Conference)
 
     def __str__(self):
-        return '{} - {}'.format(self.title, self.authors.all()[0].name)
+        return '{} ({} {})'.format(self.title, self.conference.initials,
+                                   self.date.year)
 
 
     class Meta:
-        ordering = ('date','title')
+        ordering = ('-date','title',)
+
+
+class AuthorsOrder(models.Model):
+    publication = models.ForeignKey(Publication)
+    author = models.ForeignKey(Member)
+
+    def __str__(self):
+        return '{} - {}'.format(self.publication.title,
+                                self.author.citation_name)

@@ -17,7 +17,7 @@
         {% for publication in publications %}
         <tr>
             <td>{{ publication.title }}</td>
-            <td>{{ publication.authors.all.0.name }}</td>
+            <td>{{ publication.authors.all.0.citation_name }}</td>
             <td>{{ publication.conference.initials }}</td>
             <td>{{ publication.date }}</td>
             <td>

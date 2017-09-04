@@ -41,7 +41,8 @@ class Scholarship(models.Model):
     hours_schedule = models.IntegerField(default=40)
 
     def __str__(self):
-        return self.name
+        return '{} ({}/{})'.format(self.name, self.institution.initials,
+                                   self.founder.initials)
 
     class Meta:
         ordering = ('name',)
