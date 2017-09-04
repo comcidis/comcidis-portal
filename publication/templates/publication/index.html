@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Produções Associadas</h1>
+
+<table class="w3-table-all w3-hoverable">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Confer</th>
+            <th>Ano</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for publication in publications %}
+        <tr>
+            <td>{{ publication.title }}</td>
+            <td>{{ publication.authors.all.0.name }}</td>
+            <td>{{ publication.conference.initials }}</td>
+            <td>{{ publication.date }}</td>
+            <td>
+                {% if publication.link %}
+                <a href="{{ publication.link }}" target="_blank">
+                    <i class="fa fa-file-pdf-o"></i>
+                </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
