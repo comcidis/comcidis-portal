@@ -67,9 +67,12 @@ class Member(models.Model):
     degree = models.ForeignKey(Degree)
     scholarship = models.ForeignKey(ScholarshipType, on_delete=models.CASCADE)
     institution = models.ForeignKey(InstitutionDepartment, on_delete=models.CASCADE)
+    citation_name = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
+
 
     class Meta:
         ordering = ('scholarship', 'name',)
