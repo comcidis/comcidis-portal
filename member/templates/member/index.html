@@ -8,6 +8,7 @@
 <h3>Orientador</h3>
 <ul class="w3-ul w3-card-4">
 {% for advisor in advisors %}
+    {% if advisor.is_active %}
     <li class="w3-bar">
       <a href="{{ advisor.lattes_link }}" target="_blank">
         <img src="{{ advisor.email|gravatar_url:150 }}" class="w3-bar-item
@@ -23,12 +24,14 @@
         </div>
       </a>
     </li>
+    {% endif %}
 {% endfor %}
 </ul>
 
 <h3>Alunos</h3>
 <ul class="w3-ul w3-card-4">
 {% for member in members %}
+    {% if member.is_active %}
     <li class="w3-bar">
       <a href="{{ member.lattes_link }}" target="_blank">
         <img src="{{ member.email|gravatar_url:150 }}" class="w3-bar-item
@@ -44,6 +47,7 @@
         </div>
       </a>
     </li>
+    {% endif %}
 {% endfor %}
 </ul>
 </div>
