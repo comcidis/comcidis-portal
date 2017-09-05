@@ -25,7 +25,7 @@ SECRET_KEY = 'pq%u1j2+=cty1+8m5ds!f_hl+!pl708fy%)25i9&^cs$62u_s3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['comcidis-django-johnjonzz.c9users.io',]
 
 
 # Application definition
