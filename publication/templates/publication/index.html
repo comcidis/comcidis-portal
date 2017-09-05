@@ -8,25 +8,23 @@
         <tr>
             <th>Título</th>
             <th>Autor</th>
-            <th>Confer</th>
+            <th>Conferência</th>
             <th>Ano</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         {% for publication in publications %}
         <tr>
-            <td>{{ publication.title }}</td>
+            <td>
+                {% if publication.link %}
+                    <a href="{{ publication.link }}">{{ publication.title }}</a>
+                {% else %}
+                    {{ publication.title }}
+                {% endif %}
+            </td>
             <td>{{ publication.authors_list.0.citation_name }}</td>
             <td>{{ publication.conference.initials }}</td>
             <td>{{ publication.date }}</td>
-            <td>
-                {% if publication.link %}
-                <a href="{{ publication.link }}" target="_blank">
-                    <i class="fa fa-file-pdf-o"></i>
-                </a>
-                {% endif %}
-            </td>
         </tr>
         {% endfor %}
     </tbody>

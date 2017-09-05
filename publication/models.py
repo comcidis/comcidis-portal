@@ -22,6 +22,7 @@ class Publication(models.Model):
     date = models.DateField()
     link = models.CharField(max_length=150, blank=True)
     conference = models.ForeignKey(Conference)
+    bibtex = models.TextField(blank=True)
 
     def authors_list(self):
         """Get an ordered authors list"""
