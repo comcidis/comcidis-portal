@@ -29,4 +29,24 @@
         {% endfor %}
     </tbody>
 </table>
+
+<div class="w3-padding-64">
+    <div class="w3-center">
+        <div class="w3-bar">
+          {% if publications.has_previous %}
+          <a href="{% url 'publication.index' %}?page={{ publications.previous_page_number }}" class="w3-button">&laquo;</a>
+          {% endif %}
+          {% for num in publications.paginator.page_range %}
+              {% if num == publications.number %}
+              <a href="{% url 'publication.index' %}?page={{ num }}" class="w3-button w3-theme-d3">{{ num }}</a>
+              {% else %}
+              <a href="{% url 'publication.index' %}?page={{ num }}" class="w3-button">{{ num }}</a>
+              {% endif %}
+          {% endfor %}
+          {% if publications.has_next %}
+          <a href="{% url 'publication.index' %}?page={{ publications.next_page_number }}" class="w3-button">&raquo;</a>
+          {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
