@@ -9,33 +9,26 @@
   <img src="{% static 'images/logo-white.svg' %}" alt="ComCiDis logo">
   <h1 class="w3-margin w3-jumbo">ComCiDis</h1>
   <h4 class="w3-xlarge">Grupo de Computação Científica Distribuída</h4>
+  
+  
 </header>
 
-<div class="w3-row-padding">
-  <h2 class="w3-center">Produções Recentes</h2>
-        <div class="w3-col m3">
-            <div class="w3-card-4">
-                <header class="w3-container w3-light-grey">
-                    <img src="{{'victor.dias.oliveira@gmail.com'|gravatar_url:150}}" alt="Avatar" class="w3-left
-                          w3-circle w3-margin-right w3-margin-top" style="width:32px">
-                      <h3>Oliveira, V. D.</h3>
-                </header>
+<div class="w3-row-padding w3-padding-24 w3-light-grey">
+  <!--<h2 class="w3-center">Produções Recentes</h2>-->
+      {% for publication in recent_publications %}
+        <div class="w3-col m3 w3-center">
+            <div class="w3-card-4 w3-white">
                 <div class="w3-container">
-                      <p>Alocação de Ambientes Virtuais com base na
-                            Afinidade entre Perfis de Aplicações Massivamente
-                            Paralelas e Distribuídas</p>
-                      <p>Anais do SBRC2017</p>
+                      <p>{{ publication.title }}</p>
+                      <p>{{ publication.authors_list.0.citation_name }}</p>
+                      <p><small>{{ publication.conference }} {{ publication.date.year }}</small></p>
                 </div>
                  <div class="w3-row">
-                     <div class="w3-col m6">
-                       <a href="#" class="w3-button w3-block w3-green">Citar</a>
-                     </div>
-                     <div class="w3-col m6">
-                       <a href="#" class="w3-button w3-block w3-blue">Ler</a>
-                     </div>
+                       <a href="#" class="w3-button w3-block w3-theme-d3">Ler</a>
                  </div>
             </div>
         </div>
+      {% endfor %}
 </div>
 
 
