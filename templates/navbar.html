@@ -1,13 +1,19 @@
+{% load staticfiles %}
+
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-theme-d3 w3-card-2 w3-left-align w3-large">
+  <div class="w3-bar w3-theme-d3 w3-card-2 w3-left-align w3-large" style="-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-padding-large
-        w3-hover-white">ComCiDis</a>
+        w3-hover-theme">
+      <img src="{% static 'images/logo-white.svg' %}" alt="ComCiDis logo" height="24px">
+    </a>
     <a href="{% url 'member.index' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large
-    w3-hover-white">Equipe</a>
+    w3-hover-theme">Equipe</a>
     <a href="{% url 'publication.index' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large
-    w3-hover-white">Produções</a>
+    w3-hover-theme">Produções</a>
   </div>
 
   <!-- Navbar on small screens -->
