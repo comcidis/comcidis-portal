@@ -22,17 +22,20 @@ class Hardware(models.Model):
     vendor = models.ForeignKey(Vendor)
     family = models.CharField(max_length=75)
     GB = 'GB'
+    TB = 'TB'
     CORES = 'CO'
     BPS = 'BP'
     UNIT_CHOICES = (
         (GB, 'GB'),
+        (TB, 'TB'),
         (CORES, 'Cores'),
         (BPS, 'bps'),
     )
     unit = models.CharField(max_length=2, choices=UNIT_CHOICES, default=CORES)
     
     def __str__(self):
-        return '{} {} @ {}'.format(self.vendor, self.family, self.mhz)
+        return '{}: {} {} @ {}'.format(self.resource.name, self.vendor,
+                                       self.family, self.mhz)
         
     
     class Meta:
@@ -47,9 +50,10 @@ class Node(models.Model):
 
     def specs(self):
         resources = {}
-        for hw in self.hardware.all():
+        for node_hw in self.nodehardware_set.all():
+            hw = node_hw.hardware
             resource = resources.get(hw.resource.name, {'label': hw.get_unit_display()})
-            resource['total'] = resource.get('total', 0) + hw.number
+            resource['total'] = resource.get('total', 0) + (hw.number * node_hw.amount)
             resources[hw.resource.name] = resource
         return resources
 
