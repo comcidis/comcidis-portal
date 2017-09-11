@@ -1,47 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Produções Associadas</h1>
-
-{% for publication in publications %}
-<div class="w3-container">
-  <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ publication.title }}</h5>
-  <h6 class="w3-opacity">
+<div class="container mt-4">
+  <h1>Produções Associadas</h1>
+  
+  <div class="list-group mt-4">
+  {% for publication in publications %}
+  <a href="{{ publication.link }}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1"><i class="fa fa-file-pdf-o"></i> {{ publication.title }}</p>
+      <small>{{ publication.conference.initials }} {{ publication.date.year }}</small>
+    </div>
+    <!--<p class="mb-1">{{ publication.title }}</p>-->
+    <small>
       {% for author in publication.authors_list %}
         {{ author.citation_name }}
         {% if not forloop.last %}
-        ;
+          ;
         {% endif %}
-        {% endfor %}
-        
-      - {{ publication.conference.initials }} {{ publication.date.year }}
-  </h6>
-</div>
-{% empty %}
-<div class="w3-container">
-  <h5>Nenhuma produção cadastrada.</h5>
-</div>
-{% endfor %}
+      {% endfor %}
+    </small>
+  </a>
+  {% empty %}
+    <h5>Nenhuma produção cadastrada</h5>
+  {% endfor %}
+  </div>
+
+
 
 
 <!-- pagination -->
-<div class="w3-padding-64">
-    <div class="w3-center">
-        <div class="w3-bar">
-          {% if publications.has_previous %}
-          <a href="{% url 'publication.index' %}?page={{ publications.previous_page_number }}" class="w3-button">&laquo;</a>
-          {% endif %}
-          {% for num in publications.paginator.page_range %}
-              {% if num == publications.number %}
-              <a href="{% url 'publication.index' %}?page={{ num }}" class="w3-button w3-theme-d3">{{ num }}</a>
-              {% else %}
-              <a href="{% url 'publication.index' %}?page={{ num }}" class="w3-button">{{ num }}</a>
-              {% endif %}
-          {% endfor %}
-          {% if publications.has_next %}
-          <a href="{% url 'publication.index' %}?page={{ publications.next_page_number }}" class="w3-button">&raquo;</a>
-          {% endif %}
-        </div>
-    </div>
+<div class="wrapper mt-4">
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    {% if publications.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    {% endif %}
+    {% for num in publications.paginator.page_range %}
+        {% if num == publications.number %}
+        <li class="page-item active"><a class="page-link" href="{% url 'publication.index' %}?page={{ num }}">{{ num }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="{% url 'publication.index' %}?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if publications.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="{% url 'publication.index' %}?page={{ publications.next_page_number }}">></a>
+    </li>
+    {% endif %}
+  </ul>
+</nav><!-- /pagination -->
 </div>
+
+</div><!-- /container -->
+
 {% endblock %}

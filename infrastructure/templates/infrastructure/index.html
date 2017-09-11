@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Infraestrutura</h1>
+<div class="container mt-4">
+  <h1>Infraestrutura</h1>
 
-<div class="w3-row-padding">
-{% for cluster in infrastructure %}
-<div class="w3-third w3-margin-bottom">
-  <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-    <li class="w3-theme-d3 w3-xlarge w3-padding-32">
-      {{ cluster.name }}<br />
-      <small class="w3-small">({{ cluster.description }})</small>
-    </li>
-    {% for resource_name, resource in cluster.overview.items %}
-    <li class="w3-padding-16"><b>{{ resource.total }}{{ resource.label}}</b> {{ resource_name }}</li>
+  <div class="card-deck">
+    {% for cluster in infrastructure %}
+    <div class="card" style="width: 20rem;">
+      <div class="card-header card-primary text-white">
+        {{ cluster.short_description }}
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">{{ cluster.name }}</h4>
+        <p class="card-text">{{ cluster.description }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for resource_name, resource in cluster.overview.items %}
+        <li class="list-group-item"><span class="lead"><strong>{{ resource.total }} {{ resource.label}}</strong> {{ resource_name }}</span></li>
+        {% endfor %}
+      </ul>
+      <div class="card-footer">
+        <a href="#" class="card-link">Detalhes</a>
+        <a href="#" class="card-link">Solitar Acesso</a>
+      </div>
+    </div><!-- /card -->
     {% endfor %}
-    <li class="w3-light-grey w3-padding-24">
-      <button class="w3-button w3-green w3-padding-large w3-disabled">Requisitar Acesso</button>
-    </li>
-  </ul>
-</div>
-{% empty %}
-<h5>Nenhuma infraestrutura cadastrada.</h5>
-{% endfor %}
-</div>
+  </div><!-- /card-deck -->
+</div><!-- /container -->
 
 {% endblock %}

@@ -2,51 +2,43 @@
 {% load member_extras %}
 
 {% block content %}
-<h1>Equipe</h1>
-
-<h3>Orientador</h3>
-<ul class="w3-ul w3-card-4">
-{% for advisor in advisors %}
-    {% if advisor.is_active %}
-    <li class="w3-bar w3-hover-shadow">
-      <a href="{{ advisor.lattes_link }}" target="_blank">
-        <img src="{{ advisor.email|gravatar_url:150 }}" class="w3-bar-item
-          w3-circle" style="width:75px">
-        <div class="w3-bar-item">
-          <div><span class="w3-small">{{ advisor.degree }}</span>
-              <span class="w3-large">
-                  {{ advisor.name }}</span>
-          </div>
-          <span>
-              {{advisor.scholarship}}
-          </span>
+<div class="container mt-4">
+  <h1>Equipe</h1>
+  
+  <h3 class="mt-4">Orientador</h3>
+  {% for advisor in advisors %}
+      {% if advisor.is_active %}
+      <div class="media">
+        <a href="{{ advisor.lattes }}" target="_blank">
+          <img class="d-flex mr-3 rounded-circle" src="{{ advisor.email|gravatar_url:150 }}" alt="Gravatar {{ advisor.name }}" width="64px">
+        </a>
+        <div class="media-body">
+          <h5 class="mt-0"><small>{{ advisor.degree }}</small> {{ advisor.name }}</h5>
+          <span>{{ advisor.scholarship }}</span>
         </div>
-      </a>
-    </li>
-    {% endif %}
-{% endfor %}
-</ul>
-
-<h3>Alunos</h3>
-<ul class="w3-ul w3-card-4">
-{% for member in members %}
-    {% if member.is_active %}
-    <li class="w3-bar w3-hover-shadow">
-      <a href="{{ member.lattes_link }}" target="_blank">
-        <img src="{{ member.email|gravatar_url:150 }}" class="w3-bar-item
-        w3-circle" style="width:75px">
-        <div class="w3-bar-item">
-          <div><span class="w3-small">{{ member.degree }}</span>
-              <span class="w3-large">
-                  {{ member.name }}</span>
-          </div>
-          <span>
-              {{member.scholarship}}
-          </span>
+      </div>
+      {% endif %}
+  {% endfor %}
+  
+  <h3 class="mt-4">Alunos</h3>
+  <div class="row">
+  {% for member in members %}
+      {% if member.is_active %}
+      <div class="col-md-6">
+      <div class="media">
+        <a href="{{ member.lattes }}" target="_blank">
+          <img class="d-flex mr-3 rounded-circle" src="{{ member.email|gravatar_url:150 }}" alt="Gravatar {{ member.name }}" width="64px">
+        </a>
+        <div class="media-body">
+          <h5 class="mt-0"><small>{{ member.degree }}</small> {{ member.name }}</h5>
+          <span class="badge badge-default">{{ member.line_of_research }}</span><br />
+          <span>{{ member.scholarship }}</span>
         </div>
-      </a>
-    </li>
-    {% endif %}
-{% endfor %}
-</ul>
+      </div>
+      </div>
+      {% endif %}
+  {% endfor %}
+  </div>
+</div>
+
 {% endblock %}

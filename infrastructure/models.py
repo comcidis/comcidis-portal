@@ -72,7 +72,8 @@ class NodeHardware(models.Model):
 
 class Infrastructure(models.Model):
     name = models.CharField(max_length=75)
-    description = models.CharField(max_length=125)
+    short_description = models.CharField(max_length=125)
+    description = models.TextField()
     nodes = models.ManyToManyField(Node, through='InfrastructureNode')
 
     def overview(self):
