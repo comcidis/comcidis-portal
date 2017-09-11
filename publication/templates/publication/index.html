@@ -5,7 +5,7 @@
 
 {% for publication in publications %}
 <div class="w3-container">
-  <h5>[{{ forloop.counter }}] {{ publication.title }}</h5>
+  <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{ publication.title }}</h5>
   <h6 class="w3-opacity">
       {% for author in publication.authors_list %}
         {{ author.citation_name }}

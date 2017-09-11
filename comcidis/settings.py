@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'member',
     'publication',
+    'infrastructure',
 ]
 
 MIDDLEWARE = [
