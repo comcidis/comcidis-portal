@@ -58,6 +58,17 @@ class ScholarshipType(models.Model):
                                    self.scholarship.institution.initials)
 
 
+class LineOfResearch(models.Model):
+    name = models.CharField(max_length=125)
+    
+    def __str__(self):
+        return self.name
+
+
+    class Meta:
+        ordering = ('name',)
+
+
 class Member(models.Model):
     """Define a team member"""
     name = models.CharField(max_length=125)
@@ -68,6 +79,7 @@ class Member(models.Model):
     degree = models.ForeignKey(Degree)
     scholarship = models.ForeignKey(ScholarshipType, on_delete=models.CASCADE)
     institution = models.ForeignKey(InstitutionDepartment, on_delete=models.CASCADE)
+    line_of_research = models.ForeignKey(LineOfResearch)
     citation_name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
 

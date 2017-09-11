@@ -6,6 +6,7 @@ from .models import Member
 from .models import Institution
 from .models import InstitutionDepartment
 from .models import Degree
+from .models import LineOfResearch
 
 
 admin.site.register(ScholarshipFounder)
@@ -15,3 +16,4 @@ admin.site.register(Member)
 admin.site.register(Institution)
 admin.site.register(InstitutionDepartment)
 admin.site.register(Degree)
+admin.site.register(LineOfResearch)
