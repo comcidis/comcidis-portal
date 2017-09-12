@@ -6,12 +6,11 @@
   
   <div class="list-group mt-4">
   {% for publication in publications %}
-  <a href="{{ publication.link }}" class="list-group-item list-group-item-action flex-column align-items-start">
+  <a href="{% url 'publication.detail' publication.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <p class="mb-1"><i class="fa fa-file-pdf-o"></i> {{ publication.title }}</p>
       <small>{{ publication.conference.initials }} {{ publication.date.year }}</small>
     </div>
-    <!--<p class="mb-1">{{ publication.title }}</p>-->
     <small>
       {% for author in publication.authors_list %}
         {{ author.citation_name }}

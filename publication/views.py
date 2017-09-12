@@ -18,3 +18,8 @@ def index(request):
     context = {'publications': publications}
     
     return render(request, 'publication/index.html', context)
+
+def detail(request, publication_id):
+    publication = Publication.objects.get(id=publication_id)
+    context = {'publication': publication}
+    return render(request, 'publication/detail.html', context)
