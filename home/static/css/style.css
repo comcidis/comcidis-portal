@@ -27,19 +27,28 @@
     background-color: #0a69b7;
 }
 
-
-body {
-  padding-top: 3rem;
-}
-
-
-footer {
-  /*background-color: #043b68;*/
-  background-color: #032b4c;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
 .page-title {
     margin-top: 20px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 160px;
+  padding-top: 3rem;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 160px;
+  background-color: #424242;
 }

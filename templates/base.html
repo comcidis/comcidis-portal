@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Grupo de Computação Científica Distribuída">
     <meta name="author" content="ComCiDis">
-    <link rel="icon" href="..">
 
     <title>ComCiDis {% block title %}{% endblock %}</title>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/static/favicons/manifest.json">
+		<link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#0a69b7">
+		<link rel="shortcut icon" href="/static/favicons/favicon.ico">
+		<meta name="msapplication-config" content="/static/favicons/browserconfig.xml">
+		<meta name="theme-color" content="#0a69b7">
+		
+		
+		<!-- Media tags -->
+		<meta property="og:title" content="ComCiDis"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="http://comcidis.lncc.br"/>
+		<meta property="og:site_name" content="ComCiDis"/>
+		<meta property="og:description" content="Grupo de Computação Científica Distribuída"/>
+		<meta property="og:image" content="http://comcidis.lncc.br/static/images/logo/bg-blue.jpg" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="333" />
+		<meta property="og:image:height" content="333" />
 
     <!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -19,9 +39,7 @@
 	<body>
 
 		{% include 'navbar.html' %}
-
-	    {% block content %}{% endblock %}
-
+		{% block content %}{% endblock %}
 		{% include 'footer.html' %}
 
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

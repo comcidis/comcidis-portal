@@ -2,11 +2,13 @@
 {% load member_extras %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-5 mb-5">
   <h1>Equipe</h1>
   
   <h3 class="mt-4">Orientador</h3>
+  <div class="row">
   {% for advisor in advisors %}
+    <div class="col-md-12 mt-2">
       {% if advisor.is_active %}
       <div class="media">
         <a href="{{ advisor.lattes }}" target="_blank">
@@ -18,13 +20,15 @@
         </div>
       </div>
       {% endif %}
+    </div>
   {% endfor %}
+  </div>
   
   <h3 class="mt-4">Alunos</h3>
   <div class="row">
   {% for member in members %}
       {% if member.is_active %}
-      <div class="col-md-6">
+      <div class="col-md-6 mt-2">
       <div class="media">
         <a href="{{ member.lattes }}" target="_blank">
           <img class="d-flex mr-3 rounded-circle" src="{{ member.email|gravatar_url:150 }}" alt="Gravatar {{ member.name }}" width="64px">
