@@ -35,7 +35,7 @@ class ScholarshipFounder(models.Model):
 
 class Scholarship(models.Model):
     name = models.CharField(max_length=70)
-    initials = models.CharField(max_length=10)
+    initials = models.CharField(max_length=15)
     institution = models.ForeignKey(Institution)
     founder = models.ForeignKey(ScholarshipFounder, on_delete=models.CASCADE)
     hours_schedule = models.IntegerField(default=40)

@@ -11,7 +11,7 @@
     <div class="col-md-12 mt-2">
       {% if advisor.is_active %}
       <div class="media">
-        <a href="{{ advisor.lattes }}" target="_blank">
+        <a href="{{ advisor.lattes_link }}" target="_blank">
           <img class="d-flex mr-3 rounded-circle" src="{{ advisor.email|gravatar_url:150 }}" alt="Gravatar {{ advisor.name }}" width="64px">
         </a>
         <div class="media-body">
@@ -30,7 +30,7 @@
       {% if member.is_active %}
       <div class="col-md-6 mt-2">
       <div class="media">
-        <a href="{{ member.lattes }}" target="_blank">
+        <a href="{{ member.lattes_link }}" target="_blank">
           <img class="d-flex mr-3 rounded-circle" src="{{ member.email|gravatar_url:150 }}" alt="Gravatar {{ member.name }}" width="64px">
         </a>
         <div class="media-body">
