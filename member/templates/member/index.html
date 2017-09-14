@@ -12,11 +12,12 @@
       {% if advisor.is_active %}
       <div class="media">
         <a href="{{ advisor.lattes_link }}" target="_blank">
-          <img class="d-flex mr-3 rounded-circle" src="{{ advisor.email|gravatar_url:150 }}" alt="Gravatar {{ advisor.name }}" width="64px">
+          <img class="d-flex mr-3 rounded-circle" src="{{ advisor.email|gravatar_url:150 }}" alt="Gravatar {{ advisor.name }}" width="78px">
         </a>
         <div class="media-body">
           <h5 class="mt-0"><small>{{ advisor.degree }}</small> {{ advisor.name }}</h5>
-          <span>{{ advisor.scholarship }}</span>
+          <span>{{ advisor.scholarship }}</span><br>
+          <span class="badge badge-default">{{ advisor.line_of_research }}</span>
         </div>
       </div>
       {% endif %}
@@ -24,19 +25,19 @@
   {% endfor %}
   </div>
   
-  <h3 class="mt-4">Alunos</h3>
+  <h3 class="mt-5">Alunos</h3>
   <div class="row">
   {% for member in members %}
       {% if member.is_active %}
-      <div class="col-md-6 mt-2">
+      <div class="col-md-6 mt-4">
       <div class="media">
         <a href="{{ member.lattes_link }}" target="_blank">
-          <img class="d-flex mr-3 rounded-circle" src="{{ member.email|gravatar_url:150 }}" alt="Gravatar {{ member.name }}" width="64px">
+          <img class="d-flex mr-3 rounded-circle" src="{{ member.email|gravatar_url:150 }}" alt="Gravatar {{ member.name }}" width="78px">
         </a>
         <div class="media-body">
           <h5 class="mt-0"><small>{{ member.degree }}</small> {{ member.name }}</h5>
-          <span class="badge badge-default">{{ member.line_of_research }}</span><br />
-          <span>{{ member.scholarship }}</span>
+          <span>{{ member.scholarship }}</span><br>
+          <span class="badge badge-default">{{ member.line_of_research }}</span>
         </div>
       </div>
       </div>
