@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5 mb-5 pd-5">
+<div class="container mt-3 mb-5 pd-5">
   <h1>Infraestrutura</h1>
 
   <div class="card-deck">
     {% for cluster in infrastructure %}
-    <div class="card" style="width: 20rem;">
+    <div class="card mt-3" style="width: 20rem;">
       <div class="card-header card-primary text-white">
         {{ cluster.short_description }}
       </div>
