@@ -15,10 +15,10 @@
 </div>
 
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-3">
   <div class="card-deck">
     {% for publication in recent_publications %}
-    <div class="card">
+    <div class="card mt-3">
       <div class="card-block text-center">
         <p class="card-text"><a href="{% url 'publication.detail' publication.id %}" class="text-default">{{ publication.title }}</a></p>
         <p class="card-text"><small class="text-muted">

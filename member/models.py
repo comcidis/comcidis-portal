@@ -88,4 +88,4 @@ class Member(models.Model):
 
 
     class Meta:
-        ordering = ('scholarship', 'name',)
+        ordering = ('name', 'scholarship',)
