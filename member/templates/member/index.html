@@ -2,7 +2,7 @@
 {% load member_extras %}
 
 {% block content %}
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5 pb-5">
   <h1>Equipe</h1>
   
   <h3 class="mt-4">Orientador</h3>
@@ -25,7 +25,7 @@
   {% endfor %}
   </div>
   
-  <h3 class="mt-5">Alunos</h3>
+  <h3 class="mt-5 ">Alunos</h3>
   <div class="row">
   {% for member in members %}
       {% if member.is_active %}
