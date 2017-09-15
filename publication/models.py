@@ -18,7 +18,7 @@ class Publication(models.Model):
     pub_authors = models.ManyToManyField(Member, through='AuthorsOrder')
     title = models.CharField(max_length=150)
     abstract = models.TextField()
-    resume = models.TextField()
+    resume = models.TextField(blank=True)
     date = models.DateField()
     link = models.CharField(max_length=150, blank=True)
     conference = models.ForeignKey(Conference)
