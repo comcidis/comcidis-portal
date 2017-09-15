@@ -3,5 +3,6 @@ from .models import Infrastructure
 
 def index(request):
     infrastructure = Infrastructure.objects.all()
-    context = {'infrastructure': infrastructure}
+    context = {'mobile_title_page': 'Infraestrutura',
+               'infrastructure': infrastructure}
     return render(request, 'infrastructure/index.html', context)

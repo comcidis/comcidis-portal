@@ -10,6 +10,7 @@ def index(request):
     half_of_list_length = round(len(lines_of_research) / 2)
     research_columns = [lines_of_research[:half_of_list_length],
                         lines_of_research[half_of_list_length:]]
-    context = {'recent_publications': recent_publications,
+    context = {'mobile_title_page': 'Home',
+               'recent_publications': recent_publications,
                'sections': sections, 'research_columns': research_columns}
     return render(request, 'home/index.html', context)

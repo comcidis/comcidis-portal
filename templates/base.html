@@ -38,7 +38,7 @@
   </head>
 	<body>
 
-		{% include 'navbar.html' %}
+		{% include 'navbar.html' with mobile_title_page=mobile_title_page %}
 		{% block content %}{% endblock %}
 		{% include 'footer.html' %}
 

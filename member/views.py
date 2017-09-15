@@ -7,5 +7,6 @@ def index(request):
     """
     advisors = Member.objects.filter(advisor=True)
     members = Member.objects.filter(advisor=False)
-    context = {'advisors': advisors, 'members': members}
+    context = {'mobile_title_page': 'Equipe',
+               'advisors': advisors, 'members': members}
     return render(request, 'member/index.html', context)
