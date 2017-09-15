@@ -20,7 +20,7 @@
     {% for publication in recent_publications %}
     <div class="card mt-3">
       <div class="card-block text-center">
-        <p class="card-text"><a href="{% url 'publication.detail' publication.id %}" class="text-default">{{ publication.title|title }}</a></p>
+        <p class="card-text"><a href="{% url 'publication.detail' publication.slug %}" class="text-default">{{ publication.title|title }}</a></p>
         <p class="card-text"><small class="text-muted">
           {% for author in publication.authors_list %}
             {{ author.citation_name }}

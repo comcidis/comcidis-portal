@@ -19,9 +19,9 @@ def index(request):
                'publications': publications}
     
     return render(request, 'publication/index.html', context)
-
-def detail(request, publication_id):
-    publication = Publication.objects.get(id=publication_id)
+    
+def detail(request, slug):
+    publication = Publication.objects.get(slug=slug)
     conference = '{} {}'.format(publication.conference, publication.date.year)
     context = {'mobile_title_page': conference,
                'publication': publication}

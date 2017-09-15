@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^([0-9]+)/$', views.detail, name='publication.detail'),
+    url(r'^(?P<slug>[-\w]+)/$', views.detail, name='publication.detail'),
     url(r'^$', views.index, name='publication.index'),
 ]
